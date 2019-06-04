@@ -8,6 +8,7 @@
         About
     </h2>
     <p>
-        Put content here.
+        I am Tamar and I've always liked movies.
+        Now I want to pass it forward! :)
     </p>
 </asp:Content>
