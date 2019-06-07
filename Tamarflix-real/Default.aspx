@@ -8,6 +8,5 @@
         Welcome to Tamarflix!
     </h2>
     <p>
-        Here you can download movies :)
-    </p>
+        <strong>Here you can download movies ^_^</strong></p>
 </asp:Content>

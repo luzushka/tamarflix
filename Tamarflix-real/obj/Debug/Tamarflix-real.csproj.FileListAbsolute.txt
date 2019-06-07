@@ -2,3 +2,7 @@ C:\Users\yonat\Desktop\Tamarflix\Tamarflix-real\bin\Tamarflix-real.dll
 C:\Users\yonat\Desktop\Tamarflix\Tamarflix-real\bin\Tamarflix-real.pdb
 C:\Users\yonat\Desktop\Tamarflix\Tamarflix-real\obj\Debug\Tamarflix-real.dll
 C:\Users\yonat\Desktop\Tamarflix\Tamarflix-real\obj\Debug\Tamarflix-real.pdb
+C:\projects\tamarflix\Tamarflix-real\bin\Tamarflix-real.dll
+C:\projects\tamarflix\Tamarflix-real\bin\Tamarflix-real.pdb
+C:\projects\tamarflix\Tamarflix-real\obj\Debug\Tamarflix-real.dll
+C:\projects\tamarflix\Tamarflix-real\obj\Debug\Tamarflix-real.pdb

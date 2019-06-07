@@ -8,7 +8,8 @@
         About
     </h2>
     <p>
-        I am Tamar and I've always liked movies.
+        <b>I am Tamar and I've always liked movies.
         Now I want to pass it forward! :)
+    </b>
     </p>
 </asp:Content>
