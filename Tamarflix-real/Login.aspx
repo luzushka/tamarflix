@@ -16,7 +16,7 @@ Login
 </tr>
 <tr>
 <td>Password:</td>
-<td><asp:TextBox ID="pwd" runat="server" /></td>
+<td><asp:TextBox ID="pwd" TextMode="Password" runat="server" /></td>
 </tr>
 <tr>
 <td>

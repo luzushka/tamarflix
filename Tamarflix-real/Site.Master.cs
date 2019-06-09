@@ -11,14 +11,29 @@ namespace Tamarflix_real
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["FirstName"].ToString() != "")
+            if (Session["FirstName"] != null)
             {
-                HeadLoginView.Visible = false;
+                loginLink.Visible = false;
+                logoutLink.Visible = true;
+                greetLabel.Text = "Hello, " + Session["FirstName"].ToString();
+                System.Diagnostics.Debug.WriteLine("session:" + Session["FirstName"].ToString());
+            }
+            else
+            {
+                loginLink.Visible = true;
+                logoutLink.Visible = false;
+                greetLabel.Visible = false;
+                System.Diagnostics.Debug.WriteLine("false");
             }
 
         }
 
         protected void NavigationMenu_MenuItemClick(object sender, MenuEventArgs e)
+        {
+
+        }
+
+        protected void MultiView1_ActiveViewChanged(object sender, EventArgs e)
         {
 
         }
