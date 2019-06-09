@@ -8,5 +8,6 @@ namespace Tamarflix_real
     public static class SQLQueries
     {
         public const string RegisteredUsersQuery = "select * from Registered_Users where UserName='{0}' and Password='{1}'";
+        public const string AllMoviesQuery = "select * from MovList";
     }
 }
