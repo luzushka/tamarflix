@@ -13,5 +13,10 @@ namespace Tamarflix_real
         {
 
         }
+
+        protected void NavigationMenu_MenuItemClick(object sender, MenuEventArgs e)
+        {
+
+        }
     }
 }

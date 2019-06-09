@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
         About
-    </h2>
+        </h2>
     <p>
         <b>I am Tamar and I've always liked movies.
         Now I want to pass it forward! :)
