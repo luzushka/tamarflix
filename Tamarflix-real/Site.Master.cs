@@ -11,6 +11,10 @@ namespace Tamarflix_real
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["FirstName"].ToString() != "")
+            {
+                HeadLoginView.Visible = false;
+            }
 
         }
 
