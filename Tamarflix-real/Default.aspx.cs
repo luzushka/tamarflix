@@ -16,32 +16,11 @@ namespace Tamarflix_real
             if (Session["FirstName"] == null)
             {
                 loginToProceed.Text = "Please log-in to proceed...";
-                movieTablePanel.Visible = false;
+
             }
             else
             {
-                OleDbConnection con = new OleDbConnection();
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
-                con.Open();
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandText = String.Format(SQLQueries.AllMoviesQuery);
-                cmd.Connection = con;
-                OleDbDataReader a = cmd.ExecuteReader();
-                OleDbDataAdapter da = new OleDbDataAdapter(SQLQueries.AllMoviesQuery, con);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
-
-
-                while (a.Read())
-                {
-                    System.Diagnostics.Debug.WriteLine(a[0]+" "+a[1]+" "+a[2]);
-                    
-                }
-
                 loginToProceed.Text = "";
-                MovieRepeater.DataSource = ds;
-                MovieRepeater.DataBind();
-
             }
         }
     }

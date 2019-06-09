@@ -17,6 +17,11 @@ namespace Tamarflix_real
                 logoutLink.Visible = true;
                 greetLabel.Text = "Hello, " + Session["FirstName"].ToString();
                 System.Diagnostics.Debug.WriteLine("session:" + Session["FirstName"].ToString());
+                NavigationMenu.Items.Add(new MenuItem
+                {
+                    Text = "Buy Movies",
+                    NavigateUrl = "~/BuyMovies.aspx"
+                });
             }
             else
             {

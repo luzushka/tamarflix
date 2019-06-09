@@ -69,6 +69,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Login.aspx" />
+    <Content Include="BuyMovies.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -121,6 +122,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="SQLQueries.cs" />
+    <Compile Include="BuyMovies.aspx.cs">
+      <DependentUpon>BuyMovies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BuyMovies.aspx.designer.cs">
+      <DependentUpon>BuyMovies.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSet.xsc">
