@@ -10,7 +10,7 @@
     <p>
         <strong>Here you can download movies ^_^</strong>
     </p>
-    <p>
-        Please log-in to proceed...
-    </p>
+    <asp:Label runat="server" ID="loginToProceed">
+        
+    </asp:Label>
 </asp:Content>

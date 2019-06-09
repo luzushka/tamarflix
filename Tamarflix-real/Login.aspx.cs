@@ -22,7 +22,7 @@ namespace Tamarflix_real
             con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
             con.Open();
             OleDbCommand cmd = new OleDbCommand();
-            cmd.CommandText = "select * from Registered_Users where UserName='"+userName.Text+"' and Password='"+pwd.Text+"'";
+            cmd.CommandText = String.Format(SQLQueries.RegisteredUsersQuery, userName.Text, pwd.Text);
             cmd.Connection = con;
             OleDbDataReader a = cmd.ExecuteReader();
             while (a.Read())

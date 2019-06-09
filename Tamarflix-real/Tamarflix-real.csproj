@@ -115,6 +115,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SQLQueries.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSet1.xsc">

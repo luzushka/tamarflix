@@ -11,7 +11,14 @@ namespace Tamarflix_real
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["FirstName"] == null)
+            {
+                loginToProceed.Text = "Please log-in to proceed...";
+            }
+            else
+            {
+                loginToProceed.Text = "";
+            }
         }
     }
 }

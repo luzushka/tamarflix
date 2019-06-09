@@ -105,9 +105,9 @@ first child of the left and right table columns */
     margin: 0px;
     padding: 0px;
     background: #CC0099;
-    width: 103%;
-    top: 0px;
-    left: -30px;
+    width: 100%;
+    top: -1px;
+    left: 0px;
     height: 85px;
 }
 
