@@ -21,6 +21,28 @@ namespace Tamarflix_real
             else
             {
                 loginToProceed.Text = "";
+                OleDbConnection con = new OleDbConnection();
+                con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
+                con.Open();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandText = String.Format(SQLQueries.AllMoviesQuery);
+                cmd.Connection = con;
+                OleDbDataReader a = cmd.ExecuteReader();
+                OleDbDataAdapter da = new OleDbDataAdapter(String.Format(SQLQueries.UserMoviesQuery, "123456789"), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+
+                while (a.Read())
+                {
+                    System.Diagnostics.Debug.WriteLine(a[0] + " " + a[1] + " " + a[2]);
+
+                }
+
+
+                MovieRepeater.DataSource = ds;
+                MovieRepeater.DataBind();
+
             }
         }
     }

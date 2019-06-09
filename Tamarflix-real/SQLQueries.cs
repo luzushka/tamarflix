@@ -9,6 +9,10 @@ namespace Tamarflix_real
     {
         public const string RegisteredUsersQuery = "select * from Registered_Users where UserName='{0}' and Password='{1}'";
         public const string AllMoviesQuery = "select * from MovList";
-        public const string UserMoviesQuery = "select * from UserMovies where UserID='{0}";
+        public const string UserMoviesQuery = @"select *
+from UserMovies um
+left join MovList mv
+on um.MovieID = mv.MovID
+where um.UserID = '{0}'";
     }
 }
