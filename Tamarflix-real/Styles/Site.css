@@ -21,6 +21,13 @@ a:link, a:visited
     color: red;
 }
 
+.movie-td,
+.movie-th,
+.movie-table 
+{
+    border: 1px solid purple;
+}
+
 a:hover
 {
     color: #1d60ff;

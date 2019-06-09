@@ -16,6 +16,7 @@ namespace Tamarflix_real
             if (Session["FirstName"] == null)
             {
                 loginToProceed.Text = "Please log-in to proceed...";
+                movieTablePanel.Visible = false;
             }
             else
             {
