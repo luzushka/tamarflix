@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Tamarflix" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="Tamarflix_real._Default" %>
+    CodeBehind="Default.aspx.cs" Inherits="Tamarflix_real._Default" EnableEventValidation="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -35,6 +35,9 @@
                 <th class="movie-th">
                     Price
                 </th>
+                <th class="movie-th">
+                    Remove
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -58,6 +61,9 @@
                         </td>
                         <td class="movie-td">
                             <asp:Label ID="Label6" Text='<%# DataBinder.Eval(Container.DataItem, "Price") %>' runat="server" />
+                        </td>
+                        <td class="movie-td">
+                            <asp:Button runat="server" CommandName="Delete" OnCommand="DeleteButton_Click" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "RecordID") %>' Text="Delete"/>
                         </td>
                     </tr>
                 </ItemTemplate>

@@ -45,5 +45,23 @@ namespace Tamarflix_real
 
             }
         }
+
+        protected void DeleteButton_Click(object sender, CommandEventArgs e)
+        {            
+            var parameter = e.CommandArgument;
+            System.Diagnostics.Debug.WriteLine("Param:" + parameter.ToString());
+            OleDbConnection con = new OleDbConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandText = String.Format(SQLQueries.RemovePersonalMovie, parameter.ToString());
+            cmd.Connection = con;
+            int a = cmd.ExecuteNonQuery();
+            con.Close();
+            Response.Redirect(Request.Url.AbsoluteUri);
+            System.Diagnostics.Debug.WriteLine("Affected by delete:" + a.ToString());
+
+
+        }
     }
 }

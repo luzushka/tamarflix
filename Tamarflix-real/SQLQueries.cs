@@ -14,5 +14,6 @@ from UserMovies um
 left join MovList mv
 on um.MovieID = mv.MovID
 where um.UserID = '{0}'";
+        public const string RemovePersonalMovie = "delete from UserMovies where RecordID = {0}";
     }
 }
