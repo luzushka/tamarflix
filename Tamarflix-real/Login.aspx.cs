@@ -29,6 +29,12 @@ namespace Tamarflix_real
             {
                 System.Diagnostics.Debug.WriteLine(a[0]+" "+a[1]+" "+a[2]);
                 Session["FirstName"] = a[2];
+                Session["UserID"] = a[0];
+                List<string> MovieCart = new List<string>();
+                MovieCart.Add("1");
+                MovieCart.Add("10");
+                MovieCart.Add("13");
+                Session["BuyCart"] = MovieCart;
                 Response.Redirect("/");
 
             }

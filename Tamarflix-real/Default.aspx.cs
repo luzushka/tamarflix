@@ -16,11 +16,13 @@ namespace Tamarflix_real
             if (Session["FirstName"] == null)
             {
                 loginToProceed.Text = "Please log-in to proceed...";
+                movieTablePanel.Visible = false;
 
             }
             else
             {
                 loginToProceed.Text = "";
+                movieTablePanel.Visible = true;
                 OleDbConnection con = new OleDbConnection();
                 con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
                 con.Open();
@@ -28,7 +30,7 @@ namespace Tamarflix_real
                 cmd.CommandText = String.Format(SQLQueries.AllMoviesQuery);
                 cmd.Connection = con;
                 OleDbDataReader a = cmd.ExecuteReader();
-                OleDbDataAdapter da = new OleDbDataAdapter(String.Format(SQLQueries.UserMoviesQuery, "123456789"), con);
+                OleDbDataAdapter da = new OleDbDataAdapter(String.Format(SQLQueries.UserMoviesQuery, Session["UserID"].ToString()), con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 

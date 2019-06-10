@@ -1,16 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BuyMovies.aspx.cs" Inherits="Tamarflix_real.WebForm2" EnableEventValidation="false" %>
+﻿<%@ Page Title="MyCart" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyCart.aspx.cs" Inherits="Tamarflix_real.WebForm3" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Buy Movies
+        Your Cart
         </h2>
-    <asp:Panel runat="server" ID="movieTablePanel">
-    <br />
-    <strong>Here you can buy movies! :)</strong>
-    <br />
-    <br />
-    <br />
+<asp:Label runat="server" ID="noMovieLabel">You don't have any movies in your cart, wanna buy some?</asp:Label>
+<asp:Panel runat="server" ID="movieTablePanel">
     <table class="movie-table">
         <thead>
             <tr>
@@ -33,7 +30,7 @@
                     Price
                 </th>
                 <th class="movie-th">
-                    Add to cart
+                    Remove
                 </th>
             </tr>
         </thead>
@@ -60,12 +57,20 @@
                             <asp:Label ID="Label6" Text='<%# DataBinder.Eval(Container.DataItem, "Price") %>' runat="server" />
                         </td>
                         <td class="movie-td">
-                            <asp:Button ID="addButton" runat="server" CommandName="AddToCart" OnCommand="AddToCart_Click" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "MovID") %>' Text="Add"/>
+                            <asp:Button ID="Button1" runat="server" CommandName="Delete" OnCommand="DeleteButton_Click" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "MovID") %>' Text="Delete"/>
                         </td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
     </table>
+    <br />
+    <br />
+    <asp:Label runat="server" ID="sumTitleLabel">Your sum is:</asp:Label>
+    <asp:Label runat="server" ID="sumNumberLabel" />
+    <asp:Label runat="server" ID="Label7"> New Israeli Shekels</asp:Label>
+    <br />
+    <br />
+    <asp:Button ID="Button12" runat="server" CommandName="Buy" OnCommand="BuyNow_Click" Text="Buy Now!"/>
     </asp:Panel>
 </asp:Content>

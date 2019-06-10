@@ -13,25 +13,28 @@ namespace Tamarflix_real
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["FirstName"] != null)
+            if (Session["FirstName"] != null) // if user is connected
             {
+                List<string> buyCart = (List<string>)Session["BuyCart"];
+                string queryString = "";
+                if (buyCart != null && buyCart.Count > 0) // hide movies already in the cart
+                {
+                    string comaSeparatedMovies = CartUtils.ListToComaSeperatedMovieString(buyCart);
+                    queryString = String.Format(SQLQueries.AllMoviesExcludingCart, comaSeparatedMovies);
+                }
+                else
+                {
+                    queryString = SQLQueries.AllMoviesQuery;
+                }
+
                 OleDbConnection con = new OleDbConnection();
                 con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
                 con.Open();
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.CommandText = String.Format(SQLQueries.AllMoviesQuery);
-                cmd.Connection = con;
-                OleDbDataReader a = cmd.ExecuteReader();
-                OleDbDataAdapter da = new OleDbDataAdapter(SQLQueries.AllMoviesQuery, con);
+
+                OleDbDataAdapter da = new OleDbDataAdapter(queryString, con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
-
-                while (a.Read())
-                {
-                    System.Diagnostics.Debug.WriteLine(a[0] + " " + a[1] + " " + a[2]);
-
-                }
 
                 
                 MovieRepeater.DataSource = ds;
@@ -39,6 +42,15 @@ namespace Tamarflix_real
 
             }
 
+        }
+
+        protected void AddToCart_Click(object sender, CommandEventArgs e)
+        {            
+            var parameter = e.CommandArgument;
+            List<string> buyCart = (List<string>)Session["BuyCart"];
+            buyCart.Add(parameter.ToString());
+            System.Diagnostics.Debug.WriteLine("buycart:" + buyCart.ToString());
+            Response.Redirect("~/MyCart.aspx");
         }
     }
 }

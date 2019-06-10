@@ -22,6 +22,11 @@ namespace Tamarflix_real
                     Text = "Buy Movies",
                     NavigateUrl = "~/BuyMovies.aspx"
                 });
+                NavigationMenu.Items.Add(new MenuItem
+                {
+                    Text = String.Format("Your cart({0})", ((List<string>)Session["BuyCart"]).Count),
+                    NavigateUrl = "~/MyCart.aspx"
+                });
             }
             else
             {
