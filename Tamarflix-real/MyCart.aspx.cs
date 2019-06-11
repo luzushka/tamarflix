@@ -64,10 +64,22 @@ namespace Tamarflix_real
             var parameter = e.CommandArgument;
             System.Diagnostics.Debug.WriteLine("Param:" + parameter.ToString());
             List<string> buyCart = (List<string>)Session["BuyCart"];
+
+            OleDbConnection con = new OleDbConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
+            con.Open();
+            foreach (string MovieID in buyCart)
+            {
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.CommandText = String.Format(SQLQueries.BuyMovie, Session["UserID"], MovieID);
+                cmd.Connection = con;
+                int a = cmd.ExecuteNonQuery();
+            }
+
+            Session["BuyCart"] = new List<string>();
             
             System.Diagnostics.Debug.WriteLine("buycart:" + buyCart.ToString());
             Response.Redirect(Request.Url.AbsoluteUri);
         }
-        
     }
 }

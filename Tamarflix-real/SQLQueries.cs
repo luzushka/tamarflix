@@ -18,5 +18,7 @@ namespace Tamarflix_real
                                                 on um.MovieID = mv.MovID
                                                 where um.UserID = '{0}'";
         public const string RemovePersonalMovie = "delete from UserMovies where RecordID = {0}";
+        public const string BuyMovie = @"insert into UserMovies (UserID, MovieID)
+VALUES ('{0}', {1});";
     }
 }
