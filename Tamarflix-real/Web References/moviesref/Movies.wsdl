@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/DataSet.xsd" />
+      <s:import schemaLocation="http://localhost:60179/Movies.asmx?schema=DataSet" namespace="http://tempuri.org/DataSet.xsd" />
+      <s:element name="GetAllMovies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="queryString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllMoviesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllMoviesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/DataSet.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCartMovies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="values" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCartMoviesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCartMoviesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/DataSet.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCartMoviesSum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="values" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCartMoviesSumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCartMoviesSumResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BuyCart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buyCart" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BuyCartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BuyCartResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyMovies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMyMoviesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMyMoviesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/DataSet.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveMyMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="movieID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveMyMovieResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllMoviesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllMovies" />
+  </wsdl:message>
+  <wsdl:message name="GetAllMoviesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCartMoviesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCartMovies" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCartMoviesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCartMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCartMoviesSumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCartMoviesSum" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCartMoviesSumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCartMoviesSumResponse" />
+  </wsdl:message>
+  <wsdl:message name="BuyCartSoapIn">
+    <wsdl:part name="parameters" element="tns:BuyCart" />
+  </wsdl:message>
+  <wsdl:message name="BuyCartSoapOut">
+    <wsdl:part name="parameters" element="tns:BuyCartResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMoviesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMyMovies" />
+  </wsdl:message>
+  <wsdl:message name="GetMyMoviesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMyMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveMyMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveMyMovie" />
+  </wsdl:message>
+  <wsdl:message name="RemoveMyMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveMyMovieResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MoviesSoap">
+    <wsdl:operation name="GetAllMovies">
+      <wsdl:input message="tns:GetAllMoviesSoapIn" />
+      <wsdl:output message="tns:GetAllMoviesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCartMovies">
+      <wsdl:input message="tns:GetAllCartMoviesSoapIn" />
+      <wsdl:output message="tns:GetAllCartMoviesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCartMoviesSum">
+      <wsdl:input message="tns:GetAllCartMoviesSumSoapIn" />
+      <wsdl:output message="tns:GetAllCartMoviesSumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BuyCart">
+      <wsdl:input message="tns:BuyCartSoapIn" />
+      <wsdl:output message="tns:BuyCartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMovies">
+      <wsdl:input message="tns:GetMyMoviesSoapIn" />
+      <wsdl:output message="tns:GetMyMoviesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMyMovie">
+      <wsdl:input message="tns:RemoveMyMovieSoapIn" />
+      <wsdl:output message="tns:RemoveMyMovieSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MoviesSoap" type="tns:MoviesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllMovies">
+      <soap:operation soapAction="http://tempuri.org/GetAllMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCartMovies">
+      <soap:operation soapAction="http://tempuri.org/GetAllCartMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCartMoviesSum">
+      <soap:operation soapAction="http://tempuri.org/GetAllCartMoviesSum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyCart">
+      <soap:operation soapAction="http://tempuri.org/BuyCart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMovies">
+      <soap:operation soapAction="http://tempuri.org/GetMyMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMyMovie">
+      <soap:operation soapAction="http://tempuri.org/RemoveMyMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MoviesSoap12" type="tns:MoviesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllMovies">
+      <soap12:operation soapAction="http://tempuri.org/GetAllMovies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCartMovies">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCartMovies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCartMoviesSum">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCartMoviesSum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyCart">
+      <soap12:operation soapAction="http://tempuri.org/BuyCart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMovies">
+      <soap12:operation soapAction="http://tempuri.org/GetMyMovies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMyMovie">
+      <soap12:operation soapAction="http://tempuri.org/RemoveMyMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Movies">
+    <wsdl:port name="MoviesSoap" binding="tns:MoviesSoap">
+      <soap:address location="http://localhost:60179/Movies.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MoviesSoap12" binding="tns:MoviesSoap12">
+      <soap12:address location="http://localhost:60179/Movies.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OleDb;
 using System.Configuration;
+using Tamarflix_real.moviesref;
 
 namespace Tamarflix_real
 {
@@ -27,13 +28,9 @@ namespace Tamarflix_real
                     queryString = SQLQueries.AllMoviesQuery;
                 }
 
-                OleDbConnection con = new OleDbConnection();
-                con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
-                con.Open();
+                moviesref.Movies proxy = new moviesref.Movies();
 
-                OleDbDataAdapter da = new OleDbDataAdapter(queryString, con);
-                DataSet ds = new DataSet();
-                da.Fill(ds);
+                Tamarflix_real.moviesref.DataSet ds = proxy.GetAllMovies(queryString);
 
 
                 

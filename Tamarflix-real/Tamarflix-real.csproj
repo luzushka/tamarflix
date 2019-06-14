@@ -54,6 +54,7 @@
     <Content Include="App_Data\TamarlixDB.accdb" />
     <Content Include="Logout.aspx" />
     <Content Include="Member.asmx" />
+    <Content Include="Movies.asmx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -65,6 +66,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost\Member.disco" />
+    <None Include="Web References\moviesref\DataSet.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\moviesref\DataSet.xsd" />
+    <None Include="Web References\moviesref\Movies.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -79,6 +85,11 @@
     <Content Include="MyCart.aspx" />
     <None Include="Web References\localhost\Member.wsdl" />
     <None Include="Web References\localhost\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\moviesref\Movies.wsdl" />
+    <None Include="Web References\moviesref\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -116,6 +127,10 @@
     </Compile>
     <Compile Include="Member.asmx.cs">
       <DependentUpon>Member.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Movies.asmx.cs">
+      <DependentUpon>Movies.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +173,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\moviesref\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="DataSet.xsc">
@@ -189,6 +209,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Tamarflix_real_localhost_Member</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:60179/Movies.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\moviesref\</RelPath>
+      <UpdateFromURL>http://localhost:60179/Movies.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Tamarflix_real_moviesref_Movies</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -32,5 +32,15 @@ namespace Tamarflix_real.Properties {
                 return ((string)(this["Tamarflix_real_localhost_Member"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:60179/Movies.asmx")]
+        public string Tamarflix_real_moviesref_Movies {
+            get {
+                return ((string)(this["Tamarflix_real_moviesref_Movies"]));
+            }
+        }
     }
 }
