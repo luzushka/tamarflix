@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OleDb;
 using System.Configuration;
+using Tamarflix_real.localhost;
+
 
 namespace Tamarflix_real
 {
@@ -18,25 +20,21 @@ namespace Tamarflix_real
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            OleDbConnection con = new OleDbConnection();
-            con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand();
-            cmd.CommandText = String.Format(SQLQueries.RegisteredUsersQuery, userName.Text, pwd.Text);
-            cmd.Connection = con;
-            OleDbDataReader a = cmd.ExecuteReader();
-            while (a.Read())
-            {
-                System.Diagnostics.Debug.WriteLine(a[0]+" "+a[1]+" "+a[2]);
-                Session["FirstName"] = a[2];
-                Session["UserID"] = a[0];
-                List<string> MovieCart = new List<string>();
-                MovieCart.Add("1");
-                MovieCart.Add("10");
-                MovieCart.Add("13");
-                Session["BuyCart"] = MovieCart;
-                Response.Redirect("/");
+            // create a proxy for the member web service
+            localhost.Member proxy = new localhost.Member();
 
+            string[] member = proxy.Login(userName.Text, pwd.Text);
+            if (member.Length == 3)
+            {
+                    System.Diagnostics.Debug.WriteLine(member[0]+" "+member[1]+" "+member[2]);
+                    Session["FirstName"] = member[2];
+                    Session["UserID"] = member[0];
+                    List<string> MovieCart = new List<string>();
+                    MovieCart.Add("1");
+                    MovieCart.Add("10");
+                    MovieCart.Add("13");
+                    Session["BuyCart"] = MovieCart;
+                    Response.Redirect("/");
             }
 
             Label1.Text = "Invalid credentials. Please try again!";

@@ -6,4 +6,3 @@ C:\projects\tamarflix\Tamarflix-real\bin\Tamarflix-real.dll
 C:\projects\tamarflix\Tamarflix-real\bin\Tamarflix-real.pdb
 C:\projects\tamarflix\Tamarflix-real\obj\Debug\Tamarflix-real.dll
 C:\projects\tamarflix\Tamarflix-real\obj\Debug\Tamarflix-real.pdb
-C:\projects\tamarflix\Tamarflix-real\obj\Debug\Tamarflix-real.csprojResolveAssemblyReference.cache
