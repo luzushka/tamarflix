@@ -11,7 +11,7 @@ namespace Tamarflix_real
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["FirstName"] != null)
+            if (Session["FirstName"] != null && !(bool)Session["IsAdmin"])
             {
                 loginLink.Visible = false;
                 logoutLink.Visible = true;
@@ -28,6 +28,19 @@ namespace Tamarflix_real
                     NavigateUrl = "~/MyCart.aspx"
                 });
             }
+            else if (Session["FirstName"] != null && (bool)Session["IsAdmin"])
+            {
+                loginLink.Visible = false;
+                logoutLink.Visible = true;
+                greetLabel.Text = "Hello, administrator " + Session["FirstName"].ToString();
+                System.Diagnostics.Debug.WriteLine("session:" + Session["FirstName"].ToString());
+                NavigationMenu.Items.Add(new MenuItem
+                {
+                    Text = "Manage Movies",
+                    NavigateUrl = "~/ManageMovies.aspx"
+                });
+            }
+
             else
             {
                 loginLink.Visible = true;

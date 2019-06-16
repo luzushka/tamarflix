@@ -24,11 +24,12 @@ namespace Tamarflix_real
             localhost.Member proxy = new localhost.Member();
 
             string[] member = proxy.Login(userName.Text, pwd.Text);
-            if (member.Length == 3)
+            if (member.Length == 4)
             {
-                    System.Diagnostics.Debug.WriteLine(member[0]+" "+member[1]+" "+member[2]);
+                    System.Diagnostics.Debug.WriteLine(member[0]+" "+member[1]+" "+member[2]+" "+member[3]);
                     Session["FirstName"] = member[2];
                     Session["UserID"] = member[0];
+                    Session["IsAdmin"] = member[3] == "True";
                     List<string> MovieCart = new List<string>();
                     MovieCart.Add("1");
                     MovieCart.Add("10");

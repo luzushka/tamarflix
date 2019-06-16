@@ -107,5 +107,18 @@ namespace Tamarflix_real
             int a = cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        [WebMethod]
+        public void RemoveGeneralMovie(string movieID)
+        {
+            OleDbConnection con = new OleDbConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["TamarlixDBConnectionString"].ToString();
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandText = String.Format(SQLQueries.RemoveGeneralMovie, movieID);
+            cmd.Connection = con;
+            int a = cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

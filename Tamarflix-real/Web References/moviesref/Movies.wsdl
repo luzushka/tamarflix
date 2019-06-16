@@ -108,6 +108,16 @@
       <s:element name="RemoveMyMovieResponse">
         <s:complexType />
       </s:element>
+      <s:element name="RemoveGeneralMovie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="movieID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveGeneralMovieResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetAllMoviesSoapIn">
@@ -146,6 +156,12 @@
   <wsdl:message name="RemoveMyMovieSoapOut">
     <wsdl:part name="parameters" element="tns:RemoveMyMovieResponse" />
   </wsdl:message>
+  <wsdl:message name="RemoveGeneralMovieSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveGeneralMovie" />
+  </wsdl:message>
+  <wsdl:message name="RemoveGeneralMovieSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveGeneralMovieResponse" />
+  </wsdl:message>
   <wsdl:portType name="MoviesSoap">
     <wsdl:operation name="GetAllMovies">
       <wsdl:input message="tns:GetAllMoviesSoapIn" />
@@ -170,6 +186,10 @@
     <wsdl:operation name="RemoveMyMovie">
       <wsdl:input message="tns:RemoveMyMovieSoapIn" />
       <wsdl:output message="tns:RemoveMyMovieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveGeneralMovie">
+      <wsdl:input message="tns:RemoveGeneralMovieSoapIn" />
+      <wsdl:output message="tns:RemoveGeneralMovieSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="MoviesSoap" type="tns:MoviesSoap">
@@ -228,6 +248,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RemoveGeneralMovie">
+      <soap:operation soapAction="http://tempuri.org/RemoveGeneralMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="MoviesSoap12" type="tns:MoviesSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -278,6 +307,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveMyMovie">
       <soap12:operation soapAction="http://tempuri.org/RemoveMyMovie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveGeneralMovie">
+      <soap12:operation soapAction="http://tempuri.org/RemoveGeneralMovie" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

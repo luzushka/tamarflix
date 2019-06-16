@@ -31,15 +31,14 @@ namespace Tamarflix_real
             cmd.CommandText = String.Format(SQLQueries.RegisteredUsersQuery, username, password);
             cmd.Connection = con;
             OleDbDataReader a = cmd.ExecuteReader();
-            string[] member = new string[3];
+            string[] member = new string[4];
             while (a.Read())
             {
-                System.Diagnostics.Debug.WriteLine(a[0].ToString() + " " + a[1].ToString() + " " + a[2].ToString());
+                System.Diagnostics.Debug.WriteLine(a[0].ToString() + " " + a[1].ToString() + " " + a[2].ToString() + " " + a[7].ToString());
                 member[0] = a[0].ToString();
                 member[1] = a[1].ToString();
                 member[2] = a[2].ToString();
-                System.Diagnostics.Debug.WriteLine("[member]" + member[0] + member[1] + member[2]);
-
+                member[3] = a[7].ToString();
                 return member;
             }
             System.Diagnostics.Debug.WriteLine("[nomember]");

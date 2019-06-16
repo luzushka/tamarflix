@@ -41,6 +41,8 @@ namespace Tamarflix_real.moviesref {
         
         private System.Threading.SendOrPostCallback RemoveMyMovieOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RemoveGeneralMovieOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -96,6 +98,9 @@ namespace Tamarflix_real.moviesref {
         
         /// <remarks/>
         public event RemoveMyMovieCompletedEventHandler RemoveMyMovieCompleted;
+        
+        /// <remarks/>
+        public event RemoveGeneralMovieCompletedEventHandler RemoveGeneralMovieCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAllMovies", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -269,6 +274,34 @@ namespace Tamarflix_real.moviesref {
             if ((this.RemoveMyMovieCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RemoveMyMovieCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RemoveGeneralMovie", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RemoveGeneralMovie(string movieID) {
+            this.Invoke("RemoveGeneralMovie", new object[] {
+                        movieID});
+        }
+        
+        /// <remarks/>
+        public void RemoveGeneralMovieAsync(string movieID) {
+            this.RemoveGeneralMovieAsync(movieID, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveGeneralMovieAsync(string movieID, object userState) {
+            if ((this.RemoveGeneralMovieOperationCompleted == null)) {
+                this.RemoveGeneralMovieOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveGeneralMovieOperationCompleted);
+            }
+            this.InvokeAsync("RemoveGeneralMovie", new object[] {
+                        movieID}, this.RemoveGeneralMovieOperationCompleted, userState);
+        }
+        
+        private void OnRemoveGeneralMovieOperationCompleted(object arg) {
+            if ((this.RemoveGeneralMovieCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveGeneralMovieCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -651,6 +684,10 @@ namespace Tamarflix_real.moviesref {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void RemoveMyMovieCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void RemoveGeneralMovieCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591
